@@ -1,0 +1,33 @@
+h1 {
+    color: red;
+}
+
+body, html {
+    height: 100%;
+}
+
+#mainApp {
+    background-color: white;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: beige;
+}
+
+.myNav {
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 10px 10px 10px 1px black;
+}
+
+.myLogo {
+    color: greenyellow;
+}
+
+a:hover, a:visited {
+    color:greenyellow;
+}
