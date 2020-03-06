@@ -21,45 +21,18 @@
     </head>
     <body id="bg">
         <nav class="myNav">
-            <a href="" class="navbar-brand myLogo">PizzaSpot</a>
+            <a href="" class="navbar-brand myLogo">PizzaFuego</a>
         </nav>
         <div id="background"> 
             <div class="col-8 offset-2" id="mainApp">
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
+                <h1>Height purposes</h1>
+                <br>
 
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
-
-                <h1>placeholder</h1>
-                <h1>placeholder</h1>
+                <h1>Salads</h1>
+                
+                {% for salad in salads %}
+                <h1>{{ salad }}</h1>
+                {% endfor %}
             </div>
         </div>
     </body>
