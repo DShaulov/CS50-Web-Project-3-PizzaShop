@@ -47,7 +47,7 @@ class Sub(models.Model):
             self.price = self.price + 0.50
 
     def __str__(self):
-        return f"{self.name} sub, size {self.size}, cost: {self.price}"
+        return f"{self.size} {self.name} sub, cost: {self.price}$"
 
 class Pasta(models.Model):
     """defines pasta class"""
@@ -55,7 +55,7 @@ class Pasta(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return f"{self.name} pasta, cost: {self.price}"
+        return f"{self.name} pasta, cost: {self.price}$"
 
 class DinnerPlatter(models.Model):
     """defines dinner platter class"""
@@ -64,4 +64,4 @@ class DinnerPlatter(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return f"{self.name} dinner platter, cost: {self.price}"
+        return f"{self.size} {self.name} dinner platter, cost: {self.price}$"

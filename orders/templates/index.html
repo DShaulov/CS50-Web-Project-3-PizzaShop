@@ -28,11 +28,70 @@
                 <h1>Height purposes</h1>
                 <br>
 
-                <h1>Salads</h1>
-                
-                {% for salad in salads %}
-                <h1>{{ salad }}</h1>
+                <h4 class="menuTitle">Regular Pizza</h4>
+                <table class="table table-dark menuTable">
+                    {% for pizza in regular_pizzas %}
+                    <tr>
+                        <td>{{ pizza.toppings }} toppings</td>
+                        <td>{{ pizza.size }}</td>
+                        <td>{{ pizza.price }}$</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <h4 class="menuTitle">Sicillian Pizza</h4>
+                <table class="table table-dark menuTable">
+                {% for pizza in sicillian_pizzas %}
+                    <tr>
+                        <td>{{ pizza.toppings }} toppings</td>
+                        <td>{{ pizza.size }}</td>
+                        <td>{{ pizza.price }}$</td>
+                    </tr>
                 {% endfor %}
+                </table>
+
+                <h4 class="menuTitle">Toppings</h4>
+                <table class="table table-dark menuTable" style="text-align: center;">
+                    {% for topping in toppings %}
+                    <tr>
+                        <td>{{ topping }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <h4 class="menuTitle">Subs</h4>
+                <table class="table table-dark menuTable">
+                {% for sub in subs %}
+                    <tr>
+                        <td>{{ sub.name }}</td>
+                        <td>{{ sub.size }}</td>
+                        <td>{{ sub.price }}$</td>
+                    </tr>
+                {% endfor %}
+                </table>
+
+                <h4 class="menuTitle">Salads</h4>
+                <table class="table table-dark menuTable">
+                {% for salad in salads %}
+                    <tr>
+                        <td>{{ salad.name }}</td>
+                        <td>{{ salad.price }}$</td>
+                    </tr>
+                {% endfor %}
+                </table>
+        
+
+                <h4 class="menuTitle">Dinner Platters</h4>
+                <table class="table table-dark menuTable">
+                {% for platter in dinner_platters %}
+                    <tr>
+                        <td>{{ platter.name }}</td>
+                        <td>{{ platter.size }}</td>
+                        <td>{{ platter.price }}</td>
+
+                    </tr>
+                {% endfor %}
+                </table>
             </div>
         </div>
     </body>
