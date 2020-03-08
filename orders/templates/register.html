@@ -8,27 +8,30 @@
 <h1 class="menuTitle">Register</h1>
     <div style="text-align: center;" class="col-4 offset-4">
         <br>
-        <form action="/register" method="POST">
+        <form action="/register" method="POST" onsubmit="return checkRegister()">
             {% csrf_token %}
-            <label for="userName" class="registerLabel">User Name:</label>
+            <label for="userName" class="formLabel">User Name:</label>
             <input type="text" class="form-control" id="userName" name="userName" autocomplete="off">
             <br>
-            <label for="firstName" class="registerLabel">First Name:</label>
-            <input type="text" class="form-control" id="firstName" name="firstName">
+            <label for="firstName" class="formLabel">First Name:</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" autocomplete="off">
             <br>
-            <label for="lastName" class="registerLabel">Last Name:</label>
-            <input type="password" class="form-control" id="lastName" name="lastName">
+            <label for="lastName" class="formLabel">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" autocomplete="off">
             <br>
-            <label for="email" class="registerLabel">Email:</label>
-            <input type="password" class="form-control" id="email" name="email">
+            <label for="email" class="formLabel">Email:</label>
+            <input type="text" class="form-control" id="email" name="email" autocomplete="off">
             <br>
-            <label for="userName" class="registerLabel">Password:</label>
+            <label for="userName" class="formLabel">Password:</label>
             <input type="password" class="form-control" id="password" name="password">
             <br>
-            <label for="confirmation" class="registerLabel">Password (again):</label>
+            <label for="confirmation" class="formLabel">Password (again):</label>
             <input type="password" class="form-control" id="confirmation" name="confirmation">
+            <div id="errorDiv">
+                <p id="errorMessage" style="color: red;"></p>
+            </div>
             <br>
-            <input type="submit" class="btn btn-primary registerLabel">
+            <input type="submit" class="btn btn-primary formLabel" value="Register">
         </form>
     </div>
 {% endblock %}

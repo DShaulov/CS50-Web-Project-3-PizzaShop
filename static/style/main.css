@@ -27,16 +27,16 @@ body, html {
 }
 
 .myLogo {
-    color: greenyellow;
+    color: #ffd500;
     text-shadow: 0px 10px 5px black;
 }
 
 a:hover, a:visited {
-    color:greenyellow;
+    color:#ffd500;
 }
 
 .menuTitle {
-    color: greenyellow;
+    color: #ffd500;
     background-color: red;
     text-align: center;
     box-shadow: 0px 10px 15px black;
@@ -55,8 +55,8 @@ a:hover, a:visited {
     height: 50px;
 }
 
-.registerLabel {
-    color: greenyellow;
+.formLabel {
+    color: #ffd500;
     background-color: red;
     text-align: center;
     border-radius: 10px;

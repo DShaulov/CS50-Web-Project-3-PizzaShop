@@ -19,19 +19,25 @@
                 background-position: center;
             }
         </style>
-        <script src="{{% static 'javascript/checkers.js' %}}"></script>
+        <script src="{% static 'javascript/checkers.js' %}"></script>
     </head>
     <body id="bg">
         <nav class="navbar navbar-expand myNav">
             <img src="static/PizzaNavRedone.png" alt="" class="pizzaLogo">
             <a href="/" class="navbar-brand myLogo">PizzaFuego</a>
             <ul class="navbar-nav">
+                {% if logged_in == "" %}
                 <li class="nav-item">
                     <a href="/login" class="nav-link myLogo">Login</a>
                 </li>
                 <li class="nav-item">
                     <a href="/register" class="nav-link myLogo">Register</a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link myLogo">Logout</a>
+                </li>
+                {% endif %}
             </ul>
         </nav>
         <div id="background"> 
