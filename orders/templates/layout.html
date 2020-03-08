@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        {% block title %}
+
+        {% endblock %}
+
+        {% load static %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'style/main.css' %}">
+        <style>
+            #background {
+                background-image: url('{% static "images/background2.jpeg" %}');
+                height: 100%;
+                width: 100%;
+                background-size: auto;
+                background-position: center;
+            }
+        </style>
+        <script src="{{% static 'javascript/checkers.js' %}}"></script>
+    </head>
+    <body id="bg">
+        <nav class="navbar navbar-expand myNav">
+            <img src="static/PizzaNavRedone.png" alt="" class="pizzaLogo">
+            <a href="/" class="navbar-brand myLogo">PizzaFuego</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/login" class="nav-link myLogo">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/register" class="nav-link myLogo">Register</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="background"> 
+            <div class="col-8 offset-2" id="mainApp">
+                <h1>-----</h1>
+                <br>
+                {% block body %}
+
+                {% endblock %}
+            </div>
+        </div>
+
+    </body>
+</html>
