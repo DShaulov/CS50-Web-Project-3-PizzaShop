@@ -1,7 +1,7 @@
 """
 The module responsible for directing the user around the site?!
 """
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -90,7 +90,7 @@ def logout(request):
     del request.session['username']
     return HttpResponseRedirect("/")
 
-def cart(request):
+def checkout(request):
    
     # check to see if user is logged in
     try:
@@ -103,3 +103,8 @@ def cart(request):
         "logged_in": logged_in
     }
     return render(request, "cart.html", context=context)
+
+def logOrder(request):
+    if request.method == "POST":
+        print("Hey im in")
+        return HttpResponse("")

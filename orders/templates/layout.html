@@ -7,16 +7,33 @@
         {% endblock %}
 
         {% load static %}
+        <script>
+            // adding minus png here, so i can use it in plusMinusBtns.js
+            function createImg(){
+                const image = document.createElement('img');
+                image.src = '{% static "images/minus.png" %}';
+                image.className = 'minusImg';
+                return image;
+            };
+        </script>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
         <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'style/main.css' %}">
         <style>
+            body, html {
+                background-image: url("{% static 'images/background1.jpg' %}");
+                height: 100%;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-style: italic;
+}
             #background {
-                background-image: url('{% static "images/background2.jpg" %}');
                 height: 100%;
                 width: 100%;
-                background-attachment: fixed;
-                background-position: center;
             }
         </style>
         <script src="{% static 'javascript/checkers.js' %}"></script>
@@ -26,8 +43,9 @@
             <img src="{% static 'images/PizzaNavRedone.png' %}" alt="" class="pizzaLogo">
             <a href="/" class="navbar-brand myLogo">PizzaFuego</a>
             <ul class="navbar-nav ml-auto">
+                <p class="counter">0</p>
                 <li class="nav-item">
-                    <a href="/cart"><img src="{% static 'images/shoppingcart.png' %}" alt="" class="pizzaLogo"></a>
+                    <button class="shoppingCartBtn" id="shoppingCart"><img src="{% static 'images/shoppingcart.png' %}" alt="" class="shoppingCartImg"></button>
                 </li>
                 {% if logged_in == "" %}
                 <li class="nav-item">
@@ -43,15 +61,24 @@
                 {% endif %}
             </ul>
         </nav>
-        <div id="background"> 
-            <div class="col-8 offset-2" id="mainApp">
-                <h1>-----</h1>
-                <br>
-                {% block body %}
+            <div id="mainApp">
+                    <h1>-----</h1>
+                    <br>
+                    {% block body %}
 
-                {% endblock %}
+                    {% endblock %}
             </div>
-        </div>
+            <div class="cartDropMenu">
+                <br><br>
+                <div id="menuItems">
+                    <table id="menuItemsTable" class="myTable">
 
+                    </table>
+                </div>
+                <br>
+                <button class="btn formLabel"><a href="/checkout">CheckOut</a></button>
+            </div>
+
+        <script src="{% static 'javascript/cartClick.js' %}"></script>
     </body>
 </html>

@@ -1,18 +1,14 @@
 h1 {
     color: red;
 }
-
-body, html {
-    height: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-style: italic;
-}
-
 #mainApp {
     height: 100%;
     overflow-y: scroll;
-    background-color: beige;
-    
+    background-color: wheat;
+    padding: 15px;
+    width: 90%;
+    margin-left: 5%;
+    float: left;
 }
 
 .myNav {
@@ -23,7 +19,7 @@ body, html {
     top: 0%;
     width: 100%;
     z-index: 100;
-    box-shadow: 10px 10px 15px 1px black;
+    box-shadow: 0px 10px 15px 1px black;
 }
 
 .myLogo {
@@ -55,9 +51,18 @@ a:hover, a:visited {
     height: 50px;
 }
 
-.shoppingCart {
+.shoppingCartImg {
     width: 50px;
     height: 50px;
+}
+
+.shoppingCartBtn {
+    border: 0px;
+    background-color: red;
+}
+
+.shoppingCartBtn:focus {
+    outline: none;
 }
 
 .formLabel {
@@ -67,6 +72,7 @@ a:hover, a:visited {
     border-radius: 10px;
     padding: 5px;
     text-shadow: 0px 5px 5px black;
+    margin-bottom: 5px;
 }
 
 .error {
@@ -105,4 +111,50 @@ a:hover, a:visited {
 
 .minusBtn:focus {
     outline: none;
+}
+
+.counter {
+    color: #ffa500;
+    text-shadow: 0px 5px 5px black;
+}
+
+.cartDropMenu {
+    position: fixed;
+    margin-top: 2.5%;
+    margin-left: 50%;
+    width: 50%;
+    background-color: #ffa500;
+    color: #ffa500;
+    text-align: center;
+    border-radius: 15px;
+    z-index: 10;
+    border: 4px solid red;
+}
+
+#menuItemsTable {
+    color: red;
+}
+
+#menuItemsTable {
+    border-radius: 15px;
+}
+
+.minusImg {
+    width: 20px;
+    height: 20px;
+}
+
+.myTable {
+    width: 100%;
+    background-color: red;
+}
+
+.myTD {
+    padding: 10px;
+}
+
+.myRow {
+    border-top: 2px solid #343a40;
+    border-bottom: 2px solid #343a40;
+    width: 100%;
 }

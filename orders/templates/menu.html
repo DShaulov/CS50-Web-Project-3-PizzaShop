@@ -6,9 +6,9 @@
 
 {% block body %}
         {% load static %}
-
+        {% csrf_token %}
         <h4 class="menuTitle">Regular Pizza</h4>
-        <table class="table table-dark menuTable">
+        <table class="table table-dark menuTable" data-title="Regular Pizza">
             <thead>
                 <th></th>
                 <th class="middleTD">Size</th>
@@ -28,7 +28,7 @@
         </table>
 
         <h4 class="menuTitle">Sicillian Pizza</h4>
-        <table class="table table-dark menuTable">
+        <table class="table table-dark menuTable" data-title="Sicillian Pizza">
             <thead>
                 <th></th>
                 <th class="middleTD">Size</th>
@@ -58,7 +58,7 @@
         </table>
 
         <h4 class="menuTitle">Subs</h4>
-        <table class="table table-dark menuTable">
+        <table class="table table-dark menuTable" data-title="Sub">
             <thead>
                 <th></th>
                 <th class="middleTD">Size</th>
@@ -78,7 +78,7 @@
         </table>
 
         <h4 class="menuTitle">Salads</h4>
-        <table class="table table-dark menuTable">
+        <table class="table table-dark menuTable" data-title="Salad">
             <thead>
                 <th></th>
                 <th class="middleTD">Price</th>
@@ -97,7 +97,7 @@
 
 
         <h4 class="menuTitle">Dinner Platters</h4>
-        <table class="table table-dark menuTable">
+        <table class="table table-dark menuTable" data-title="Dinner Platter">
             <thead>
                 <th></th>
                 <th class="middleTD">Size</th>
@@ -116,4 +116,5 @@
         {% endfor %}
         </table>
     </div>
+    <script src="{% static 'javascript/plusMinusBtns.js' %}"></script>
 {% endblock %}
