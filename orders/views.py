@@ -64,11 +64,13 @@ def login(request):
         # authenticate returns a user object if username and password match
         user = authenticate(request, username=user_name, password=password)
         if user is not None:
+            print("correct")
             request.session['username'] = user.username
             return HttpResponseRedirect("/")
         
         else:
             context = {
+                "logged_in": "",
                 "error": "*username or password are incorrect"
             }
             return render(request, "login.html", context=context)
@@ -84,5 +86,20 @@ def login(request):
         return render(request, "login.html", context=context)
 
 def logout(request):
+    """clear session['username'] and redriect to homepage """
     del request.session['username']
     return HttpResponseRedirect("/")
+
+def cart(request):
+   
+    # check to see if user is logged in
+    try:
+        logged_in = request.session['username']
+
+    except KeyError:
+        return HttpResponseRedirect("/login")
+    
+    context = {
+        "logged_in": logged_in
+    }
+    return render(request, "cart.html", context=context)

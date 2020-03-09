@@ -5,20 +5,24 @@
 {% endblock %}
 
 {% block body %}
-    
+        {% load static %}
 
         <h4 class="menuTitle">Regular Pizza</h4>
         <table class="table table-dark menuTable">
             <thead>
                 <th></th>
-                <th>Size</th>
-                <th>Price</th>
+                <th class="middleTD">Size</th>
+                <th class="middleTD">Price</th>
             </thead>
             {% for pizza in regular_pizzas %}
             <tr>
-                <td>{{ pizza.toppings }} toppings</td>
-                <td>{{ pizza.size }}</td>
-                <td>{{ pizza.price }}$</td>
+                <td style="width: 25%">{{ pizza.toppings }} toppings</td>
+                <td class="middleTD" style="width: 25%">{{ pizza.size }}</td>
+                <td class="middleTD" style="width: 25%">{{ pizza.price }}$</td>
+                <td class="btnTD" style="width: 25%">
+                    <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                    <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+                </td>
             </tr>
             {% endfor %}
         </table>
@@ -27,14 +31,19 @@
         <table class="table table-dark menuTable">
             <thead>
                 <th></th>
-                <th>Size</th>
-                <th>Price</th>
+                <th class="middleTD">Size</th>
+                <th class="middleTD">Price</th>
             </thead>
         {% for pizza in sicillian_pizzas %}
             <tr>
-                <td>{{ pizza.toppings }} toppings</td>
-                <td>{{ pizza.size }}</td>
-                <td>{{ pizza.price }}$</td>
+                <td style="width: 25%">{{ pizza.toppings }} toppings</td>
+                <td class="middleTD" style="width: 25%">{{ pizza.size }}</td>
+                <td class="middleTD" style="width: 25%">{{ pizza.price }}$</td>
+                <td class="btnTD" style="width: 25%">
+                    <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                    <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+
+                </td>
             </tr>
         {% endfor %}
         </table>
@@ -52,14 +61,18 @@
         <table class="table table-dark menuTable">
             <thead>
                 <th></th>
-                <th>Size</th>
-                <th>Price</th>
+                <th class="middleTD">Size</th>
+                <th class="middleTD">Price</th>
             </thead>
         {% for sub in subs %}
             <tr>
-                <td>{{ sub.name }}</td>
-                <td>{{ sub.size }}</td>
-                <td>{{ sub.price }}$</td>
+                <td style="width: 25%">{{ sub.name }}</td>
+                <td class="middleTD" style="width: 25%">{{ sub.size }}</td>
+                <td class="middleTD" style="width: 25%">{{ sub.price }}$</td>
+                <td class="btnTD" style="width: 25%">
+                    <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                    <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+                </td>
             </tr>
         {% endfor %}
         </table>
@@ -68,12 +81,16 @@
         <table class="table table-dark menuTable">
             <thead>
                 <th></th>
-                <th>Price</th>
+                <th class="middleTD">Price</th>
             </thead>
         {% for salad in salads %}
             <tr>
-                <td>{{ salad.name }}</td>
-                <td>{{ salad.price }}$</td>
+                <td style="width: 33.3%">{{ salad.name }}</td>
+                <td class="middleTD" style="width: 33.3%">{{ salad.price }}$</td>
+                <td class="btnTD" style="width: 33.3%">
+                    <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                    <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+                </td>
             </tr>
         {% endfor %}
         </table>
@@ -83,14 +100,18 @@
         <table class="table table-dark menuTable">
             <thead>
                 <th></th>
-                <th>Size</th>
-                <th>Price</th>
+                <th class="middleTD">Size</th>
+                <th class="middleTD">Price</th>
             </thead>
         {% for platter in dinner_platters %}
             <tr>
-                <td>{{ platter.name }}</td>
-                <td>{{ platter.size }}</td>
-                <td>{{ platter.price }}$</td>
+                <td style="width: 25%">{{ platter.name }}</td>
+                <td class="middleTD" style="width: 25%">{{ platter.size }}</td>
+                <td class="middleTD" style="width: 25%">{{ platter.price }}$</td>
+                <td class="btnTD" style="width: 25%">
+                    <button class="plusBtn" id="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                    <button class="minusBtn" hidden="true" id="minusBtn"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+                </td>
             </tr>
         {% endfor %}
         </table>

@@ -8,6 +8,7 @@
 <h1 class="menuTitle">Login</h1>
     <div style="text-align: center;" class="col-4 offset-4">
         <br>
+        <p class="error">{{ error }}</p>
         <form action="/login" method="POST" onsubmit="return checkLogin()">
             {% csrf_token %}
             <label for="userName" class="formLabel">User Name:</label>
@@ -19,6 +20,6 @@
             <input type="submit" class="btn btn-primary formLabel" value="Login">
         </form>
         <br>
-        <p style="color: red;">{{ error }}</p>
+        <p class="error">{{ error }}</p>
     </div>
 {% endblock %}

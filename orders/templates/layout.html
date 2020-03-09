@@ -7,15 +7,15 @@
         {% endblock %}
 
         {% load static %}
-        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'style/main.css' %}">
         <style>
             #background {
-                background-image: url('{% static "images/background2.jpeg" %}');
+                background-image: url('{% static "images/background2.jpg" %}');
                 height: 100%;
                 width: 100%;
-                background-size: auto;
+                background-attachment: fixed;
                 background-position: center;
             }
         </style>
@@ -23,9 +23,12 @@
     </head>
     <body id="bg">
         <nav class="navbar navbar-expand myNav">
-            <img src="static/PizzaNavRedone.png" alt="" class="pizzaLogo">
+            <img src="{% static 'images/PizzaNavRedone.png' %}" alt="" class="pizzaLogo">
             <a href="/" class="navbar-brand myLogo">PizzaFuego</a>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/cart"><img src="{% static 'images/shoppingcart.png' %}" alt="" class="pizzaLogo"></a>
+                </li>
                 {% if logged_in == "" %}
                 <li class="nav-item">
                     <a href="/login" class="nav-link myLogo">Login</a>
