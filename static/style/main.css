@@ -133,12 +133,8 @@ a:hover, a:visited {
 
 #menuItemsTable {
     color: red;
-}
-
-#menuItemsTable {
     border-radius: 15px;
 }
-
 .minusImg {
     width: 20px;
     height: 20px;
@@ -157,4 +153,12 @@ a:hover, a:visited {
     border-top: 2px solid #343a40;
     border-bottom: 2px solid #343a40;
     width: 100%;
+}
+
+img {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
 }

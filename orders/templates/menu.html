@@ -10,20 +10,30 @@
         <h4 class="menuTitle">Regular Pizza</h4>
         <table class="table table-dark menuTable" data-title="Regular Pizza">
             <thead>
-                <th></th>
-                <th class="middleTD">Size</th>
+                <th>Size</th>
+                <th class="middleTD">Toppings</th>
                 <th class="middleTD">Price</th>
             </thead>
             {% for pizza in regular_pizzas %}
             <tr>
-                <td style="width: 25%">{{ pizza.toppings }} toppings</td>
-                <td class="middleTD" style="width: 25%">{{ pizza.size }}</td>
+                <td style="width: 25%"> {{ pizza.size }} </td>
+                <td class="middleTD" style="width: 25%"> {{ pizza.toppings }} toppings</td>
                 <td class="middleTD" style="width: 25%">{{ pizza.price }}$</td>
                 <td class="btnTD" style="width: 25%">
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
                 </td>
             </tr>
+            <div class="slideDiv">
+                <tr>
+                    <td></td>
+                    <td colspan="2"><textarea name="" id="" cols="30" rows="10"></textarea></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button class="formLabel">Confirm</button></td>
+                </tr>
+            </div>
             {% endfor %}
         </table>
 
@@ -76,6 +86,21 @@
             </tr>
         {% endfor %}
         </table>
+
+        <h4 class="menuTitle">Sub Extra's</h4>
+        <table class="table table-dark menuTable" data-title="Sub Extra">
+            <thead>
+                <th class="middleTD">Name</th>
+                <th class="middleTD">Price</th>
+            </thead>
+        {% for extra in sub_extras %}
+            <tr>
+                <td class="middleTD" style="width: 50%">{{ extra.name }}</td>
+                <td class="middleTD" style="width: 50%">{{ extra.price }}$</td>
+            </tr>
+        {% endfor %}
+        </table>
+
 
         <h4 class="menuTitle">Salads</h4>
         <table class="table table-dark menuTable" data-title="Salad">

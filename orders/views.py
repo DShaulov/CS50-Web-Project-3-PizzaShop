@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import Salad, RegularPizza, SicilianPizza, DinnerPlatter, Sub, Topping, Pasta
+from .models import Salad, RegularPizza, SicilianPizza, DinnerPlatter, Sub, Topping, Pasta, SubExtra
 
 
 # Create your views here.
@@ -23,7 +23,8 @@ def index(request):
         "regular_pizzas": RegularPizza.objects.all(),
         "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
         "dinner_platters": DinnerPlatter.objects.all(),
-        "subs": Sub.objects.all(),
+        "subs": Sub.objects.all().order_by("price"),
+        "sub_extras": SubExtra.objects.all(),
         "toppings": Topping.objects.all(),
         "pastas": Pasta.objects.all(),
         "salads": Salad.objects.all()

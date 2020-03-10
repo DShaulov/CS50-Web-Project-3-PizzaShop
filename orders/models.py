@@ -24,7 +24,7 @@ class RegularPizza(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=5)
 
     def __str__(self):
-        return f"{self.size} regular pizza, {self.toppings} toppings, cost: {self.price}$"
+        return f"{self.size} regular pizza, {self.toppings} toppings, cost: {self.price}$, \n {self.toppingWhich}"
 
 class SicilianPizza(models.Model):
     """defines sicillian pizza class"""
@@ -41,13 +41,15 @@ class Sub(models.Model):
     size = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def extra_cheese(self, boolean):
-        """if extra cheese is given arguement true, add 0.50 to the price"""
-        if boolean is True:
-            self.price = self.price + 0.50
-
     def __str__(self):
         return f"{self.size} {self.name} sub, cost: {self.price}$"
+
+class SubExtra(models.Model):
+    name = models.CharField(max_length=64)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=0.50)
+
+    def __str__(self):
+        return f"{self.name}, {self.price}$"
 
 class Pasta(models.Model):
     """defines pasta class"""
@@ -65,3 +67,19 @@ class DinnerPlatter(models.Model):
 
     def __str__(self):
         return f"{self.size} {self.name} dinner platter, cost: {self.price}$"
+
+class Cart(models.Model):
+    """defines the cart class"""
+    username = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
+    size = models.CharField(max_length=64)
+    toppingsNum = models.CharField(max_length=64)
+    toppingsWhich = models.ManyToManyField(Topping)
+    extraNum = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    extraWhich = models.CharField(max_length=64)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return f"Order by: {self.username}, {self.name}, {self.size}, {self.toppingsNum}, {self.toppingsWhich}, {self.extraNum}, {self.extraWhich}"
+
+
