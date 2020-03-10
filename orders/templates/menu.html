@@ -14,6 +14,12 @@
                 <th class="middleTD">Toppings</th>
                 <th class="middleTD">Price</th>
             </thead>
+            <tr class="slideRow">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
             {% for pizza in regular_pizzas %}
             <tr>
                 <td style="width: 25%"> {{ pizza.size }} </td>
@@ -24,16 +30,11 @@
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
                 </td>
             </tr>
-            <div class="slideDiv">
-                <tr>
-                    <td></td>
-                    <td colspan="2"><textarea name="" id="" cols="30" rows="10"></textarea></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="4"><button class="formLabel">Confirm</button></td>
-                </tr>
-            </div>
+            <tr class="slideRow">
+                <td colspan="1"> <div class="slideDiv">Toppings</div></td>
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
+            </tr>
             {% endfor %}
         </table>
 
@@ -44,6 +45,12 @@
                 <th class="middleTD">Size</th>
                 <th class="middleTD">Price</th>
             </thead>
+            <tr class="slideRow">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         {% for pizza in sicillian_pizzas %}
             <tr>
                 <td style="width: 25%">{{ pizza.toppings }} toppings</td>
@@ -54,6 +61,11 @@
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
 
                 </td>
+            </tr>
+            <tr class="slideRow">
+                <td colspan="1"> <div class="slideDiv">Toppings</div></td>
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
             </tr>
         {% endfor %}
         </table>
@@ -74,6 +86,12 @@
                 <th class="middleTD">Size</th>
                 <th class="middleTD">Price</th>
             </thead>
+            <tr class="slideRow">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         {% for sub in subs %}
             <tr>
                 <td style="width: 25%">{{ sub.name }}</td>
@@ -83,6 +101,11 @@
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
                 </td>
+            </tr>
+            <tr class="slideRow">
+                <td colspan="1"> <div class="slideDiv">Extra's</div></td>
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
             </tr>
         {% endfor %}
         </table>
@@ -108,6 +131,11 @@
                 <th></th>
                 <th class="middleTD">Price</th>
             </thead>
+            <tr class="slideRow">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         {% for salad in salads %}
             <tr>
                 <td style="width: 33.3%">{{ salad.name }}</td>
@@ -116,6 +144,10 @@
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
                 </td>
+            </tr>
+            <tr class="slideRow">
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
             </tr>
         {% endfor %}
         </table>
@@ -128,18 +160,33 @@
                 <th class="middleTD">Size</th>
                 <th class="middleTD">Price</th>
             </thead>
-        {% for platter in dinner_platters %}
-            <tr>
-                <td style="width: 25%">{{ platter.name }}</td>
-                <td class="middleTD" style="width: 25%">{{ platter.size }}</td>
-                <td class="middleTD" style="width: 25%">{{ platter.price }}$</td>
-                <td class="btnTD" style="width: 25%">
-                    <button class="plusBtn" id="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
-                    <button class="minusBtn" hidden="true" id="minusBtn"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
-                </td>
+            <tr class="slideRow">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
+        {% for platter in dinner_platters %}
+                <tr>
+                    <td style="width: 25%">{{ platter.name }}</td>
+                    <td class="middleTD" style="width: 25%">{{ platter.size }}</td>
+                    <td class="middleTD" style="width: 25%">{{ platter.price }}$</td>
+                    <td class="btnTD" style="width: 25%">
+                        <button class="plusBtn" id="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                        <button class="minusBtn" hidden="true" id="minusBtn"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+                    </td>
+                </tr>
+                <tr class="slideRow">
+                    <td colspan="3"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                    <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
+                </tr>
         {% endfor %}
         </table>
     </div>
     <script src="{% static 'javascript/plusMinusBtns.js' %}"></script>
+    <script src="{% static 'javascript/slideRow.js' %}"></script>
+
+    
+    
+    
 {% endblock %}

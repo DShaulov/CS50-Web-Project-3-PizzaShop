@@ -3,21 +3,35 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // set event listeners for plus buttons
     const plusBtns = document.querySelectorAll('.plusBtn');
+    // ! MY TRIAL
     plusBtns.forEach( element => {
         element.addEventListener('click', () => {
-            // each time a plus button is clicked, update the counter next to the cart
-            var counter = parseInt(document.querySelector('.counter').innerHTML);
-            counter = counter + 1;
-            document.querySelector('.counter').innerHTML = counter;
+            const td = element.parentElement.parentElement.nextElementSibling.childNodes;
 
-            
+            for (let i = 0; i < td.length; i++){
+                if (td[i].tagName == "TD") {
+                    console.log("Got a TAGGGGG");
+                    console.log(td[i].lastChild);
+                    const slideDiv = td[i].lastChild;
+                    $(slideDiv).slideToggle(1000);
+                }
+            }
+            const slideRow = element.parentElement.parentElement.nextElementSibling;
+            //$(slideRow).toggle(1000);
+        });
+    });
+
+
+
+    // set event listeners for plus buttons
+    
+    plusBtns.forEach( element => {
+        element.addEventListener('click', () => {
             // when plus is clicked, take the table row associated with the plus,
             // and copy it to the cart
             const tableRow = element.parentElement.parentElement;
             const title = tableRow.parentElement.parentElement.dataset['title'];
-            console.log(title);
 
             // create a new table row
             const row = document.createElement('tr');
@@ -56,9 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 tableData.className = 'myTD';
                 row.append(tableData);
             };
+
+
+            // add event listeners to all confirm buttons
+            const confirmBtns = document.querySelectorAll('.confirmBtn');
+            confirmBtns.forEach( element => {
+                element.addEventListener('click', () => {
+                    // when confirm is clicked, increment the cart counter
+                    var counter = parseInt(document.querySelector('.counter').innerHTML);
+                    counter = counter + 1;
+                    document.querySelector('.counter').innerHTML = counter;
+
+                    // once confirm is clicked, add the row to the menu items table 
+                    document.querySelector('#menuItemsTable').append(row);
+                });
+            });
             
-            // add the row to the menu items table 
-            document.querySelector('#menuItemsTable').append(row);
 
 
             //! if no use, delete later
