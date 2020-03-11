@@ -35,8 +35,10 @@
                     <h5 class="formLabel">Toppings</h5>
                     <div class="toppingDiv">
                     {% for topping in toppings %}
-                        <input type="checkbox" value="{{ topping }}" id="{{ topping }}">
-                        <label for="{{ topping }}">{{ topping }}</label>
+                        <button class="toppingBtn">
+                            <input type="checkbox" value="{{ topping }}" id="{{ topping }}" data-toppingNum="{{ pizza.toppings }}" hidden>
+                            {{ topping }}
+                        </button>
                         <br>
                     {% endfor %}
                     </div>
