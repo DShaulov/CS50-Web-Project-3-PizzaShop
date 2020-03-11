@@ -4,5 +4,4 @@
 
 $(document).ready( () => {
     $('.slideDiv').hide();
-    //$('.slideRow').hide();
 });

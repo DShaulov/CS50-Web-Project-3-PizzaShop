@@ -167,3 +167,23 @@ a {
     background-color: #ffa500;
     border: 3px solid red;
 }
+
+.myTextArea {
+    border: 10px solid red;
+    border-radius: 25px;
+    height: 18vh;
+    width: 100%;
+}
+
+.confirmBtn {
+    margin: 10%;
+}
+
+.toppingDiv {
+    height: 18vh;
+    overflow-y: scroll;
+    border: 10px solid red;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: red;
+}

@@ -31,9 +31,23 @@
                 </td>
             </tr>
             <tr class="slideRow">
-                <td colspan="1"> <div class="slideDiv">Toppings</div></td>
-                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
-                <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
+                <td colspan="1"> <div class="slideDiv">
+                    <h5 class="formLabel">Toppings</h5>
+                    <div class="toppingDiv">
+                    {% for topping in toppings %}
+                        <input type="checkbox" value="{{ topping }}" id="{{ topping }}">
+                        <label for="{{ topping }}">{{ topping }}</label>
+                        <br>
+                    {% endfor %}
+                    </div>
+                </div></td>
+                <td colspan="2"> <div class="slideDiv">
+                    <h5 class="formLabel">Special Instructions</h5>
+                    <textarea name="" id="" class="myTextArea"></textarea>
+                </div></td>
+                <td><div class="slideDiv">
+                    <button class="formLabel confirmBtn">Confirm</button>
+                </div></td>
             </tr>
             {% endfor %}
         </table>
@@ -63,8 +77,15 @@
                 </td>
             </tr>
             <tr class="slideRow">
-                <td colspan="1"> <div class="slideDiv">Toppings</div></td>
-                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td colspan="1"> <div class="slideDiv">
+                    <h5 class="formLabel">Toppings</h5>
+                    <select name="" id="">
+                        {% for topping in toppings %}
+                            <option value="{{ topping }}">{{ topping }}</option>
+                        {% endfor %}
+                    </select>
+                </div></td>
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
                 <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
             </tr>
         {% endfor %}
@@ -104,7 +125,7 @@
             </tr>
             <tr class="slideRow">
                 <td colspan="1"> <div class="slideDiv">Extra's</div></td>
-                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
                 <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
             </tr>
         {% endfor %}
@@ -146,7 +167,7 @@
                 </td>
             </tr>
             <tr class="slideRow">
-                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                <td colspan="2"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
                 <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
             </tr>
         {% endfor %}
@@ -177,7 +198,7 @@
                     </td>
                 </tr>
                 <tr class="slideRow">
-                    <td colspan="3"> <div class="slideDiv"><textarea name="" id="" cols="30" rows="10"></textarea></div></td>
+                    <td colspan="3"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
                     <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
                 </tr>
         {% endfor %}
@@ -185,6 +206,7 @@
     </div>
     <script src="{% static 'javascript/plusMinusBtns.js' %}"></script>
     <script src="{% static 'javascript/slideRow.js' %}"></script>
+    <script src="{% static 'javascript/menuCheckBox.js' %}"></script>
 
     
     
