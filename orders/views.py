@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import Salad, RegularPizza, SicilianPizza, DinnerPlatter, Sub, Topping, Pasta, SubExtra
+from .models import Salad, RegularPizza, SicilianPizza, DinnerPlatter, Sub, Topping, Pasta, SubExtra, OrderCart, OrderPaid
 
 
 # Create your views here.
@@ -22,7 +22,7 @@ def index(request):
         "logged_in": logged_in,
         "regular_pizzas": RegularPizza.objects.all(),
         "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
-        "dinner_platters": DinnerPlatter.objects.all(),
+        "dinner_platters": DinnerPlatter.objects.all().order_by("price"),
         "subs": Sub.objects.all().order_by("price"),
         "sub_extras": SubExtra.objects.all(),
         "toppings": Topping.objects.all(),
@@ -106,6 +106,36 @@ def checkout(request):
     return render(request, "cart.html", context=context)
 
 def logOrder(request):
+    """contains instructions for insering new orders to the database"""
     if request.method == "POST":
-        print("Hey im in")
+        # arrange the toppings before submmiting them to the database
+        toppings = request.POST.getlist('selected_topping_array[]')
+        toppings_joined = ", ".join(toppings)
+        
+        new_order = OrderCart(
+            username = request.session['username'],
+            dish_title = request.POST.get('dish_title'),
+            dish_type = request.POST.get('dish_type'),
+            dish_size = request.POST.get('dish_size'),
+            dish_instructions = request.POST.get('textarea_text'),
+            dish_price = request.POST.get('dish_price'),
+            dish_extra_topping = toppings_joined
+        )
+
+        new_order.save()
+
         return HttpResponse("")
+
+def deleteOrder(request):
+    """contains instructions for deleting an order from the database"""
+    if request.method == "POST":
+        print("hey in trying to delete this thing!")
+        print(request.POST.get('dish_title'))
+        print(request.POST.get('dish_size'))
+        print(request.POST.get('dish_price'))
+        print(request.POST.get('textarea_text'))
+        print(request.POST.getlist('selected_topping_array[]'))
+        print(request.session["username"])
+
+
+    return HttpResponse("")
