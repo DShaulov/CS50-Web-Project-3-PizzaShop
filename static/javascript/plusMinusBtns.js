@@ -4,29 +4,24 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const plusBtns = document.querySelectorAll('.plusBtn');
-    // ! MY TRIAL
     plusBtns.forEach( element => {
         element.addEventListener('click', () => {
             const td = element.parentElement.parentElement.nextElementSibling.childNodes;
 
             for (let i = 0; i < td.length; i++){
                 if (td[i].tagName == "TD") {
-                    console.log("Got a TAGGGGG");
-                    console.log(td[i].lastChild);
                     const slideDiv = td[i].lastChild;
                     $(slideDiv).slideToggle(1000);
                 }
             }
-            const slideRow = element.parentElement.parentElement.nextElementSibling;
-            //$(slideRow).toggle(1000);
         });
     });
 
 
+    //! need to change it to confirm button
+    // set event listeners for confirm buttons
 
-    // set event listeners for plus buttons
-    
-    plusBtns.forEach( element => {
+    /* plusBtns.forEach( element => {
         element.addEventListener('click', () => {
             // when plus is clicked, take the table row associated with the plus,
             // and copy it to the cart
@@ -69,11 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 tableData.innerHTML = tableRow.children[i].innerHTML;
                 tableData.className = 'myTD';
                 row.append(tableData);
-            };
+            }; */
 
 
+
+
+            // ! see later if needed
             // add event listeners to all confirm buttons
-            const confirmBtns = document.querySelectorAll('.confirmBtn');
+            /* const confirmBtns = document.querySelectorAll('.confirmBtn');
             confirmBtns.forEach( element => {
                 element.addEventListener('click', () => {
                     // when confirm is clicked, increment the cart counter
@@ -84,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // once confirm is clicked, add the row to the menu items table 
                     document.querySelector('#menuItemsTable').append(row);
                 });
-            });
+            }); */
             
 
 
@@ -98,8 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
             var csrf = document.querySelector('input[name="csrfmiddlewaretoken"]').value
             const data = new FormData();
             data.append('csrfmiddlewaretoken', csrf);
-            request.send(data); */
+            request.send(data);
         });
-    });
+    }); */
 });
 

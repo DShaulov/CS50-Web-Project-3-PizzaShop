@@ -22,9 +22,9 @@
             </tr>
             {% for pizza in regular_pizzas %}
             <tr>
-                <td style="width: 25%"> {{ pizza.size }} </td>
+                <td style="width: 25%" data-field_name="size"> {{ pizza.size }} </td>
                 <td class="middleTD" style="width: 25%"> {{ pizza.toppings }} toppings</td>
-                <td class="middleTD" style="width: 25%">{{ pizza.price }}$</td>
+                <td class="middleTD" style="width: 25%" data-field_name="price">{{ pizza.price }}$</td>
                 <td class="btnTD" style="width: 25%">
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
@@ -32,7 +32,9 @@
             </tr>
             <tr class="slideRow">
                 <td colspan="1"> <div class="slideDiv">
-                    <h5 class="formLabel">Toppings</h5>
+                    <h5 class="formLabel">
+                        <span>Toppings</span>
+                    </h5>
                     <div class="toppingDiv">
                     {% for topping in toppings %}
                         <button class="toppingBtn">
@@ -57,8 +59,8 @@
         <h4 class="menuTitle">Sicillian Pizza</h4>
         <table class="table table-dark menuTable" data-title="Sicillian Pizza">
             <thead>
-                <th></th>
-                <th class="middleTD">Size</th>
+                <th>Size</th>
+                <th class="middleTD">Toppings</th>
                 <th class="middleTD">Price</th>
             </thead>
             <tr class="slideRow">
@@ -69,9 +71,9 @@
             </tr>
         {% for pizza in sicillian_pizzas %}
             <tr>
-                <td style="width: 25%">{{ pizza.toppings }} toppings</td>
-                <td class="middleTD" style="width: 25%">{{ pizza.size }}</td>
-                <td class="middleTD" style="width: 25%">{{ pizza.price }}$</td>
+                <td style="width: 25%" data-field_name="size">{{ pizza.size }}</td>
+                <td class="middleTD" style="width: 25%">{{ pizza.toppings }} toppings</td>
+                <td class="middleTD" style="width: 25%" data-field_name="price">{{ pizza.price }}$</td>
                 <td class="btnTD" style="width: 25%">
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
@@ -80,12 +82,16 @@
             </tr>
             <tr class="slideRow">
                 <td colspan="1"> <div class="slideDiv">
-                    <h5 class="formLabel">Toppings</h5>
-                    <select name="" id="">
-                        {% for topping in toppings %}
-                            <option value="{{ topping }}">{{ topping }}</option>
-                        {% endfor %}
-                    </select>
+                    <h5 class="formLabel">Toppings <span class="errorSpan">Only {{ pizza.toppings }}</span></h5>
+                    <div class="toppingDiv">
+                    {% for topping in toppings %}
+                        <button class="toppingBtn">
+                            <input type="checkbox" value="{{ topping }}" id="{{ topping }}" data-toppingNum="{{ pizza.toppings }}" hidden>
+                            {{ topping }}
+                        </button>
+                        <br>
+                    {% endfor %}
+                    </div>
                 </div></td>
                 <td colspan="2"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
                 <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
@@ -118,8 +124,8 @@
         {% for sub in subs %}
             <tr>
                 <td style="width: 25%">{{ sub.name }}</td>
-                <td class="middleTD" style="width: 25%">{{ sub.size }}</td>
-                <td class="middleTD" style="width: 25%">{{ sub.price }}$</td>
+                <td class="middleTD" style="width: 25%" data-field_name="size">{{ sub.size }}</td>
+                <td class="middleTD" style="width: 25%" data-field_name="price">{{ sub.price }}$</td>
                 <td class="btnTD" style="width: 25%">
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
@@ -162,7 +168,7 @@
         {% for salad in salads %}
             <tr>
                 <td style="width: 33.3%">{{ salad.name }}</td>
-                <td class="middleTD" style="width: 33.3%">{{ salad.price }}$</td>
+                <td class="middleTD" style="width: 33.3%" data-field_name="price">{{ salad.price }}$</td>
                 <td class="btnTD" style="width: 33.3%">
                     <button class="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                     <button class="minusBtn" hidden="true"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
@@ -192,8 +198,8 @@
         {% for platter in dinner_platters %}
                 <tr>
                     <td style="width: 25%">{{ platter.name }}</td>
-                    <td class="middleTD" style="width: 25%">{{ platter.size }}</td>
-                    <td class="middleTD" style="width: 25%">{{ platter.price }}$</td>
+                    <td class="middleTD" style="width: 25%" data-field_name="size">{{ platter.size }}</td>
+                    <td class="middleTD" style="width: 25%" data-field_name="price">{{ platter.price }}$</td>
                     <td class="btnTD" style="width: 25%">
                         <button class="plusBtn" id="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
                         <button class="minusBtn" hidden="true" id="minusBtn"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
@@ -209,6 +215,7 @@
     <script src="{% static 'javascript/plusMinusBtns.js' %}"></script>
     <script src="{% static 'javascript/slideRow.js' %}"></script>
     <script src="{% static 'javascript/menuCheckBox.js' %}"></script>
+    <script src="{% static 'javascript/confirmBtn.js' %}"></script>
 
     
     

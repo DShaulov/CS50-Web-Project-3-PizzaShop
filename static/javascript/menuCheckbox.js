@@ -4,7 +4,11 @@
 
 // if topping button is clicked, its equal to clicking its checkbox
 $(document).ready( () => {
+    // hide the error span message that appears when trying to select more than max toppings
+    $('.errorSpan').hide();
+
     $('.toppingBtn').on('click', event => {
+        $('.errorSpan').hide(500);
         var inputChildren = $(event.target).children();
         // if trying to deselect, allow to click regardless of max toppings exceeded
         var myInput = $(inputChildren[0]);
@@ -32,6 +36,7 @@ $(document).ready( () => {
         if (max_toppings > total_checked) {
             $(inputChildren[0]).click();
         }
+
     });
 });
 
@@ -42,7 +47,6 @@ $(document).ready( () => {
 $(document).ready( () => {
     $('input[type="checkbox"]').on('click', event => {
         // if not checked before, onclick set to checked
-        console.log("im in second");
         if ($(event.target).attr('checked') == undefined) {
             $(event.target).attr('checked', true);
             $(event.target).parent().attr('style', 'background-color: green;');
