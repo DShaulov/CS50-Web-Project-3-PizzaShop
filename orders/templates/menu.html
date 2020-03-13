@@ -8,7 +8,7 @@
         {% load static %}
         {% csrf_token %}
         <h4 class="menuTitle">Regular Pizza</h4>
-        <table class="table table-dark menuTable" data-title="Regular Pizza">
+        <table class="table table-dark menuTable">
             <thead>
                 <th>Size</th>
                 <th class="middleTD">Toppings</th>
@@ -229,6 +229,10 @@
     <script src="{% static 'javascript/slideRow.js' %}"></script>
     <script src="{% static 'javascript/menuCheckBox.js' %}"></script>
     <script src="{% static 'javascript/confirmBtn.js' %}"></script>
+    <script src="{% static 'javascript/cartPersistence.js' %}"></script>
+    <script src="{% static 'javascript/cartRetrieve.js' %}"></script>
+
+
 
     
     

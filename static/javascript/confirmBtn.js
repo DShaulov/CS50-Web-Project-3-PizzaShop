@@ -71,7 +71,12 @@
             "class": "minusImg",
             // add event listener to image, onclick remove row, and delete item from database
             "click": () => {
-                // TODO open a new ajax request to delete item from database
+                // decrement cart counter
+                var counter = $('.counter').text();
+                counter = parseInt(counter) - 1;
+                $('.counter').text(counter);
+
+                //  open a new ajax request to delete item from database
                 $.ajax({
                     url: "deleteOrder",
                     method: "POST",
@@ -97,6 +102,10 @@
         // add new row to the table
         checkout_cart_table.append(new_row);
 
+        // increment cart counter
+        var counter = $('.counter').text();
+        counter = parseInt(counter) + 1;
+        $('.counter').text(counter);
 
         //  open a new request to post the cart data to the database
         $.ajax({

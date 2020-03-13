@@ -1,5 +1,5 @@
 /**
- * contains event listeners for menu plus and minus buttons
+ * contains event listeners for menu plus button
  */
 
  // on click of plus button, slide down the slide div

@@ -5,5 +5,21 @@
 {% endblock %}
 
 {% block body %}
-    
+    <h4 class="menuTitle">Checkout</h4>
+    <table class="table table-dark menuTable">
+    {% for order in orders %}
+        <tr>
+            <td>{{ order.dish_title }}</td>
+            <td class="middleTD">{{ order.dish_type }}</td>
+            <td class="middleTD">{{ order.dish_extra_topping }}</td>
+            <td class="middleTD">{{ order.dish_size }}</td>
+            <td class="middleTD">{{ order.dish_price }}</td>
+        </tr>
+        {% if order.dish_instructions != "" %}
+        <tr>
+            <td colspan="5" style="text-align: center;">{{ order.dish_instructions }}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
 {% endblock %}

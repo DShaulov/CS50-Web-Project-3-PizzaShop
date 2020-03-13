@@ -73,7 +73,17 @@
                 <br><br>
                 <div id="menuItems">
                     <table id="menuItemsTable" class="myTable">
-
+                    {% for item in cart_contents %}
+                        <tr>
+                            <td class="formLabel" data-title>{{ item.dish_title }}</td>
+                            <td class="formLabel" data-type>{{ item.dish_type }}</td>
+                            <td class="formLabel" data-size>{{ item.dish_size }}</td>
+                            <td class="formLabel" data-price>{{ item.dish_price }}</td>
+                            <td hidden data-instructions>{{ item.dish_instructions}}</td>
+                            <td hidden data-toppings>{{ item.dish_extra_topping }}</td>
+                            <td class="formLabel"><img src='{% static "images/minus.png" %}' class="minusImg"alt="" onclick="menuRemove(this)"></td>
+                        </tr>
+                    {% endfor %}
                     </table>
                 </div>
                 <br>
@@ -81,5 +91,6 @@
             </div>
 
         <script src="{% static 'javascript/cartClick.js' %}"></script>
+        <script src="{% static 'javascript/menuRemove.js' %}"></script>
     </body>
 </html>

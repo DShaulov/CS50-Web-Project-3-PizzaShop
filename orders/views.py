@@ -27,7 +27,8 @@ def index(request):
         "sub_extras": SubExtra.objects.all(),
         "toppings": Topping.objects.all(),
         "pastas": Pasta.objects.all(),
-        "salads": Salad.objects.all()
+        "salads": Salad.objects.all(),
+        "cart_contents": OrderCart.objects.filter(username = request.session['username']).all()
     }
     return render(request, 'menu.html', context=context)
 
@@ -91,8 +92,9 @@ def logout(request):
     del request.session['username']
     return HttpResponseRedirect("/")
 
+
 def checkout(request):
-   
+    """define the checkout route"""
     # check to see if user is logged in
     try:
         logged_in = request.session['username']
@@ -100,8 +102,10 @@ def checkout(request):
     except KeyError:
         return HttpResponseRedirect("/login")
     
+    # if logged in, pass along the users cart contents to the checkout page and render the page
     context = {
-        "logged_in": logged_in
+        "logged_in": logged_in,
+        "orders": OrderCart.objects.filter(username=request.session['username']).all()
     }
     return render(request, "cart.html", context=context)
 
@@ -129,13 +133,18 @@ def logOrder(request):
 def deleteOrder(request):
     """contains instructions for deleting an order from the database"""
     if request.method == "POST":
-        print("hey in trying to delete this thing!")
-        print(request.POST.get('dish_title'))
-        print(request.POST.get('dish_size'))
-        print(request.POST.get('dish_price'))
-        print(request.POST.get('textarea_text'))
-        print(request.POST.getlist('selected_topping_array[]'))
-        print(request.session["username"])
+        # arrange the toppings before querying the database
+        toppings = request.POST.getlist('selected_topping_array[]')
+        toppings_joined = ", ".join(toppings)
 
-
+        delete_order = OrderCart.objects.filter(
+            username = request.session['username'],
+            dish_title = request.POST.get('dish_title'),
+            dish_type = request.POST.get('dish_type'),
+            dish_size = request.POST.get('dish_size'),
+            dish_instructions = request.POST.get('textarea_text'),
+            dish_price = request.POST.get('dish_price'),
+            dish_extra_topping = toppings_joined
+        )[:1].get()
+        delete_order.delete()
     return HttpResponse("")
