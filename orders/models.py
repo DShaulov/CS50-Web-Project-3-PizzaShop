@@ -46,10 +46,10 @@ class Sub(models.Model):
 
 class SubExtra(models.Model):
     name = models.CharField(max_length=64)
-    price = models.DecimalField(max_digits=5, decimal_places=2, default=0.50)
-
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    
     def __str__(self):
-        return f"{self.name}, {self.price}$"
+        return f"{self.name}"
 
 class Pasta(models.Model):
     """defines pasta class"""

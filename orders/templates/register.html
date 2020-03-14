@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+{% load static %}
 <h1 class="menuTitle">Register</h1>
     <div style="text-align: center;" class="col-4 offset-4">
         <br>
@@ -34,4 +35,5 @@
             <input type="submit" class="btn btn-primary formLabel" value="Register">
         </form>
     </div>
+    <script src="{% static 'javascript/hideCart.js' %}"></script>
 {% endblock %}

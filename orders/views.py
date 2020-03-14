@@ -14,11 +14,7 @@ def index(request):
     # check to see if user is logged in
     try:
         logged_in = request.session['username']
-
-    except KeyError:
-        logged_in = ""
-
-    context = {
+        context = {
         "logged_in": logged_in,
         "regular_pizzas": RegularPizza.objects.all(),
         "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
@@ -30,6 +26,22 @@ def index(request):
         "salads": Salad.objects.all(),
         "cart_contents": OrderCart.objects.filter(username = request.session['username']).all()
     }
+
+    except KeyError:
+        logged_in = ""
+        context = {
+        "logged_in": logged_in,
+        "regular_pizzas": RegularPizza.objects.all(),
+        "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
+        "dinner_platters": DinnerPlatter.objects.all().order_by("price"),
+        "subs": Sub.objects.all().order_by("price"),
+        "sub_extras": SubExtra.objects.all(),
+        "toppings": Topping.objects.all(),
+        "pastas": Pasta.objects.all(),
+        "salads": Salad.objects.all(),
+    }
+
+    
     return render(request, 'menu.html', context=context)
 
 def register(request):

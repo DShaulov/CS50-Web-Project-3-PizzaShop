@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+{% load static %}
     <h1 class="menuTitle">Login</h1>
         <div style="text-align: center;" class="col-4 offset-4">
             <br>
@@ -22,4 +23,5 @@
             <br>
             <p class="error">{{ error }}</p>
         </div>
+        <script src="{% static 'javascript/hideCart.js' %}"></script>
 {% endblock %}
