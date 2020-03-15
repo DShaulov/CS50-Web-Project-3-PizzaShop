@@ -4,5 +4,5 @@
 
 $(document).ready( () => {
     // get the number of menuItemsTable children and set the counter
-    $('.counter').text($('#menuItemsTable').children().length);
+    $('.counter').text($('#counterBody').children().length);
 });

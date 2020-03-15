@@ -35,7 +35,7 @@
                     <h5 class="formLabel">
                         <span>Toppings</span>
                     </h5>
-                    <div class="toppingDiv">
+                    <div class="toppingDiv" id="toppingHookForSpecialPizza">
                     {% for topping in toppings %}
                         <button class="toppingBtn">
                             <input type="checkbox" value="{{ topping }}" id="{{ topping }}" data-toppingNum="{{ pizza.toppings }}" hidden>
@@ -221,15 +221,51 @@
                 <tr class="slideRow">
                     <td colspan="3"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
                     <td><div class="slideDiv"><button class="formLabel confirmBtn">Confirm</button></div></td>
+                </tr>    
+        {% endfor %}
+        
+        {% for topping in toppings %}
+            <p class="toppingHook" hidden>{{ topping }}</p>
+        {% endfor %}
+    
+        </table>
+        <h4 class="menuTitle">Special Pizza</h4>
+        <table class="table table-dark menuTable" data-title="Dinner Platter">
+            <thead>
+                <th></th>
+                <th class="middleTD">Price</th>
+            </thead>
+            <tr class="slideRow">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% for pizza in special_pizzas %}
+                <tr>
+                    <td style="width: 25%" data-type>{{ pizza.name }}</td>
+                    <td class="middleTD" style="width: 50%" data-price>{{ pizza.price }}$</td>
+                    <td></td>
+                    <td class="btnTD" style="width: 25%">
+                        <button class="plusBtn" id="plusBtn"><img src="{% static 'images/plus.png' %}" alt="" class="plusMinus"></button>
+                        <button class="minusBtn" hidden="true" id="minusBtn"><img src="{% static 'images/minus.png' %}" alt="" class="plusMinus"></button>
+                    </td>
+                </tr>
+                <tr class="slideRow">
+                    <td colspan="3"> <div class="slideDiv"><textarea name="" id="" class="myTextArea" placeholder="Special Instructions"></textarea></div></td>
+                    <td><div class="slideDiv"><button class="formLabel confirmBtn" id="specialPizzaConfirm">Confirm</button></div></td>
                 </tr>
         {% endfor %}
         </table>
+
+        
     </div>
     <script src="{% static 'javascript/plusMinusBtns.js' %}"></script>
     <script src="{% static 'javascript/slideRow.js' %}"></script>
     <script src="{% static 'javascript/menuCheckBox.js' %}"></script>
     <script src="{% static 'javascript/confirmBtn.js' %}"></script>
     <script src="{% static 'javascript/counterSetter.js' %}"></script>
+
 
 
 

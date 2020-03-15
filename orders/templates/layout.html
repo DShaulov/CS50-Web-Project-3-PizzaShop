@@ -43,6 +43,16 @@
         <nav class="navbar navbar-expand myNav">
             <img src="{% static 'images/PizzaNavRedone.png' %}" alt="" class="pizzaLogo">
             <a href="/" class="navbar-brand myLogo">PizzaFuego</a>
+            <ul class="navbar-nav mr-auto">
+                {% if staff_status == True %}
+                <li class="nav-item">
+                    <a href="/viewOrders" class="nav-link myLogo">View Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/updateMenu" class="nav-link myLogo">Update Menu</a>
+                </li>
+                {% endif %}
+            </ul>
             <ul class="navbar-nav ml-auto">
                 <p class="counter">0</p>
                 <li class="nav-item">
@@ -74,17 +84,19 @@
                 <p class="error"></p>
                 <div id="menuItems">
                     <table id="menuItemsTable" class="myTable">
-                    {% for item in cart_contents %}
-                        <tr>
-                            <td class="formLabel" data-title>{{ item.dish_title }}</td>
-                            <td class="formLabel" data-type>{{ item.dish_type }}</td>
-                            <td class="formLabel" data-size>{{ item.dish_size }}</td>
-                            <td class="formLabel" data-price>{{ item.dish_price }}</td>
-                            <td hidden data-instructions>{{ item.dish_instructions}}</td>
-                            <td hidden data-toppings>{{ item.dish_extra_topping }}</td>
-                            <td class="formLabel"><img src='{% static "images/minus.png" %}' class="minusImg"alt="" onclick="menuRemove(this)"></td>
-                        </tr>
-                    {% endfor %}
+                        <tbody id="counterBody">
+                        {% for item in cart_contents %}
+                            <tr>
+                                <td class="formLabel" data-title>{{ item.dish_title }}</td>
+                                <td class="formLabel" data-type>{{ item.dish_type }}</td>
+                                <td class="formLabel" data-size>{{ item.dish_size }}</td>
+                                <td class="formLabel" data-price>{{ item.dish_price }}</td>
+                                <td hidden data-instructions>{{ item.dish_instructions}}</td>
+                                <td hidden data-toppings>{{ item.dish_extra_topping }}</td>
+                                <td class="formLabel"><img src='{% static "images/minus.png" %}' class="minusImg"alt="" onclick="menuRemove(this)"></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
                     </table>
                 </div>
                 <br>

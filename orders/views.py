@@ -1,11 +1,12 @@
 """
 The module responsible for directing the user around the site?!
 """
+import time
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import Salad, RegularPizza, SicilianPizza, DinnerPlatter, Sub, Topping, Pasta, SubExtra, OrderCart, OrderPaid
+from .models import Salad, RegularPizza, SicilianPizza, DinnerPlatter, Sub, Topping, Pasta, SubExtra, OrderCart, OrderPaid, SpecialPizza
 
 
 # Create your views here.
@@ -14,6 +15,8 @@ def index(request):
     # check to see if user is logged in
     try:
         logged_in = request.session['username']
+        staff_check = User.objects.get(username=logged_in).is_staff
+        print(staff_check)
         context = {
         "logged_in": logged_in,
         "regular_pizzas": RegularPizza.objects.all(),
@@ -24,7 +27,9 @@ def index(request):
         "toppings": Topping.objects.all(),
         "pastas": Pasta.objects.all(),
         "salads": Salad.objects.all(),
-        "cart_contents": OrderCart.objects.filter(username = request.session['username']).all()
+        "special_pizzas": SpecialPizza.objects.all(),
+        "cart_contents": OrderCart.objects.filter(username = request.session['username']).all(),
+        "staff_status": staff_check
     }
 
     except KeyError:
@@ -39,6 +44,7 @@ def index(request):
         "toppings": Topping.objects.all(),
         "pastas": Pasta.objects.all(),
         "salads": Salad.objects.all(),
+        "special_pizzas": SpecialPizza.objects.all()
     }
 
     
@@ -168,7 +174,8 @@ def paidOrder(request):
     
     for i in range(len(logged_order)):
         # for each order, add it to the OrderPaid table
-        paid_order = OrderPaid(order=logged_order[i])
+        paid_order = OrderPaid(order=logged_order[i], time_stamp=str(time.localtime().tm_mon) + "-" + str(time.localtime().tm_mday) + "  " \
+             + str(time.localtime().tm_hour) + ":" + str(time.localtime().tm_min) + ":" + str(time.localtime().tm_sec))
         paid_order.save()
 
     # after transfer, delete the order from the OrderCart table
@@ -178,3 +185,25 @@ def paidOrder(request):
         'logged_in': request.session['username']
     }
     return render(request, 'thankYou.html')
+
+def viewOrders(request):
+    """defines the view order route"""
+    context = {
+        "orders": OrderPaid.objects.all()
+    }
+    return render(request, "viewOrders.html", context=context)
+
+def updateMenu(request):
+    """defines the update menu route"""
+    context = {
+        "regular_pizzas": RegularPizza.objects.all(),
+        "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
+        "dinner_platters": DinnerPlatter.objects.all().order_by("price"),
+        "subs": Sub.objects.all().order_by("price"),
+        "sub_extras": SubExtra.objects.all(),
+        "toppings": Topping.objects.all(),
+        "pastas": Pasta.objects.all(),
+        "salads": Salad.objects.all(),
+        "special_pizzas": SpecialPizza.objects.all()
+    }
+    return render(request, 'updateMenu.html', context=context)

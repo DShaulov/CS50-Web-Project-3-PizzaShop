@@ -86,6 +86,15 @@ class OrderCart(models.Model):
 class OrderPaid(models.Model):
     """defines the paid order model"""
     order = models.CharField(max_length=64)
+    time_stamp = models.CharField(max_length=64)
 
     def __str__(self):
-        return f'{self.order}'
+        return f'{self.order} \nOrdered At: {self.time_stamp}'
+
+class SpecialPizza(models.Model):
+    """defines the special pizza class"""
+    name = models.CharField(max_length=64)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.name}, {self.price}$"

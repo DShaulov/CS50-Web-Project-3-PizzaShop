@@ -13,9 +13,9 @@
             return;
         };
 
-         // on click, get the containing slide row, and the row above
-         const slide_row = $(event.target).parent().parent().parent();
-         const table_row = $(event.target).parent().parent().parent().prev();
+        // on click, get the containing slide row, and the row above
+        const slide_row = $(event.target).parent().parent().parent();
+        const table_row = $(event.target).parent().parent().parent().prev();
 
          // get the title of the dish
         const dish_title =  $(slide_row).parent().parent().prev().text();
@@ -116,6 +116,31 @@
         counter = parseInt(counter) + 1;
         $('.counter').text(counter);
 
+        //  if this was a special pizza, pick toppings at random!
+        if (event.target.id == "specialPizzaConfirm") {
+            var all_toppings = [];
+            $('.toppingHook').each( function() {
+                all_toppings.push($(this).text());
+            });
+
+            console.log(all_toppings);
+
+            // pick 5 random toppings at random from the topping array
+            for (let i = 0; i < 5; i++) {
+                var random_num = Math.ceil(Math.random() * all_toppings.length) - 1;
+                var random_topping = all_toppings[random_num];
+
+                // if topping already in array, pick another one
+                var includes = selected_topping_array.includes(random_topping);
+                
+                if (includes == true){
+                    i = i - 1;
+                    continue;
+                }
+                selected_topping_array.push(random_topping);
+            }
+        }
+        
         //  open a new request to post the cart data to the database
         $.ajax({
             url: "logOrder",

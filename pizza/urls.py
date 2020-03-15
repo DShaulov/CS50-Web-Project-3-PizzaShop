@@ -25,5 +25,7 @@ urlpatterns = [
     path("checkout", include("orders.urls")),
     path("logOrder", include("orders.urls")),
     path("deleteOrder", include("orders.urls")),
-    path("paidOrder", include("orders.urls"))
+    path("paidOrder", include("orders.urls")),
+    path("viewOrders", include("orders.urls")),
+    path("updateMenu", include("orders.urls"))
 ]
