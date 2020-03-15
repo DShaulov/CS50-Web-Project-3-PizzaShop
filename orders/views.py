@@ -78,7 +78,6 @@ def login(request):
         # authenticate returns a user object if username and password match
         user = authenticate(request, username=user_name, password=password)
         if user is not None:
-            print("correct")
             request.session['username'] = user.username
             return HttpResponseRedirect("/")
         
@@ -160,3 +159,22 @@ def deleteOrder(request):
         )[:1].get()
         delete_order.delete()
     return HttpResponse("")
+
+def paidOrder(request):
+    """defines the paid order route"""
+    # select everything from the database that has the same username
+    logged_order = OrderCart.objects.filter(username=request.session['username']).all()
+    
+    
+    for i in range(len(logged_order)):
+        # for each order, add it to the OrderPaid table
+        paid_order = OrderPaid(order=logged_order[i])
+        paid_order.save()
+
+    # after transfer, delete the order from the OrderCart table
+    logged_order.delete()
+
+    context = {
+        'logged_in': request.session['username']
+    }
+    return render(request, 'thankYou.html')

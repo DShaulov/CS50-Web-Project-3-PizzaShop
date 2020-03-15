@@ -80,20 +80,12 @@ class OrderCart(models.Model):
     dish_instructions = models.CharField(max_length=64)
 
     def __str__(self):
-        return f'{self.username} Ordered: {self.dish_title}, {self.dish_type}, Size: {self.dish_size},\
-             With Toppings:  {self.dish_extra_topping}, For: {self.dish_price}, Instructions: {self.dish_instructions}'
+        return f'{self.username} Ordered: \n{self.dish_title} \n{self.dish_type} \nSize: {self.dish_size} \
+             \nWith Toppings:  {self.dish_extra_topping} \nFor: {self.dish_price}\nInstructions: {self.dish_instructions}'
 
 class OrderPaid(models.Model):
     """defines the paid order model"""
-    username = models.CharField(max_length=64)
-    dish_title = models.CharField(max_length=64)
-    dish_type = models.CharField(max_length=64)
-    dish_size = models.CharField(max_length=64)
-    dish_extra_topping = models.CharField(max_length=64)
-    dish_price = models.CharField(max_length=64)
-    dish_instructions = models.CharField(max_length=64)
-    time_ordered = models.IntegerField()
+    order = models.CharField(max_length=64)
 
     def __str__(self):
-        return f'{self.username} ordered: {self.dish_title}, {self.dish_type}, {self.dish_size}, {self.dish_extra_topping}, \
-            {self.dish_price}, {self.dish_instructions}, ordered at: {self.time_ordered}'
+        return f'{self.order}'

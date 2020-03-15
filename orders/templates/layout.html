@@ -50,7 +50,7 @@
                 </li>
                 {% if logged_in == "" %}
                 <li class="nav-item">
-                    <a href="/login" class="nav-link myLogo">Login</a>
+                    <a href="/login" class="nav-link myLogo" data-login>Login</a>
                 </li>
                 <li class="nav-item">
                     <a href="/register" class="nav-link myLogo">Register</a>
@@ -70,7 +70,8 @@
                     {% endblock %}
             </div>
             <div class="cartDropMenu">
-                <br><br>
+                <br>
+                <p class="error"></p>
                 <div id="menuItems">
                     <table id="menuItemsTable" class="myTable">
                     {% for item in cart_contents %}
@@ -87,10 +88,11 @@
                     </table>
                 </div>
                 <br>
-                <button class="btn formLabel"><a href="/checkout">CheckOut</a></button>
+                <button class="btn formLabel" onclick="CheckEmptyCart()">Checkout</button>
             </div>
 
         <script src="{% static 'javascript/cartClick.js' %}"></script>
         <script src="{% static 'javascript/menuRemove.js' %}"></script>
+        <script src="{% static 'javascript/emptyCartCheck.js' %}"></script>
     </body>
 </html>

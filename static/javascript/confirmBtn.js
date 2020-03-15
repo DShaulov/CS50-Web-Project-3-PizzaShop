@@ -4,6 +4,15 @@
 
  $(document).ready( () => {
      $('.confirmBtn').on('click', event => {
+         // clear out the empty cart error message
+         $('.error').text("");
+         //  if user is not logged in, take him to the login page
+        console.log($('a[data-login]'));
+        if ($('a[data-login').length != 0) {
+            window.location.replace('/login');
+            return;
+        };
+
          // on click, get the containing slide row, and the row above
          const slide_row = $(event.target).parent().parent().parent();
          const table_row = $(event.target).parent().parent().parent().prev();
@@ -128,3 +137,4 @@
      });
  });
 
+ 
