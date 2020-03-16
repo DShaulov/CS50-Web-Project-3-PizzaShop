@@ -6,7 +6,63 @@
 
 {% block body %}
     {% load static %}
+    <h3 class="menuTitle">Existing Items:</h3>
+
+    <h5 class="menuTitle">Regular Pizza</h5>
+    <table class="table table-dark menuTable">
+        <thead>
+            <th style="text-align: center;">Size</th>
+            <th style="text-align: center;">Toppings</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for pizza in regular_pizzas %}
+        <tr>
+                <td><input type="text" value="{{ pizza.size }}" class="form-control"></td>
+                <td><input type="text" value="{{ pizza.toppings }}" class="form-control"></td>
+                <td><input type="text" value="{{ pizza.price }}" class="form-control"></td>
+                <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        
+        {% endfor %}
+        </tbody>
+    </table>
 
 
+    <h5 class="menuTitle">Sicillian Pizza</h5>
+    <table class="table table-dark menuTable">
+        <thead>
+            <th style="text-align: center;">Size</th>
+            <th style="text-align: center;">Toppings</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for pizza in sicillian_pizzas %}
+        <tr>
+                <td><input type="text" value="{{ pizza.size }}" class="form-control"></td>
+                <td><input type="text" value="{{ pizza.toppings }}" class="form-control"></td>
+                <td><input type="text" value="{{ pizza.price }}" class="form-control"></td>
+                <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="menuTitle">Salad</h5>
+    <table class="table table-dark menuTable">
+        <thead>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for salad in salads %}
+        <tr>
+                <td><input type="text" value="{{ salad.name }}" class="form-control"></td>
+                <td><input type="text" value="{{ salad.price }}" class="form-control"></td>
+                <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     <script src="{% static 'javascript/hideCart.js' %}"></script>
 {% endblock %}

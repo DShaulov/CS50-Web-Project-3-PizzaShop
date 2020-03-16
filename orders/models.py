@@ -24,7 +24,7 @@ class RegularPizza(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=5)
 
     def __str__(self):
-        return f"{self.size} regular pizza, {self.toppings} toppings, cost: {self.price}$, \n {self.toppingWhich}"
+        return f"{self.size} regular pizza, {self.toppings} toppings, cost: {self.price}$, \n"
 
 class SicilianPizza(models.Model):
     """defines sicillian pizza class"""
