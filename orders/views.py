@@ -19,15 +19,15 @@ def index(request):
         print(staff_check)
         context = {
         "logged_in": logged_in,
-        "regular_pizzas": RegularPizza.objects.all(),
+        "regular_pizzas": RegularPizza.objects.all().order_by("price"),
         "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
         "dinner_platters": DinnerPlatter.objects.all().order_by("price"),
-        "subs": Sub.objects.all().order_by("price"),
+        "subs": Sub.objects.all().order_by("price").order_by("price"),
         "sub_extras": SubExtra.objects.all(),
         "toppings": Topping.objects.all(),
-        "pastas": Pasta.objects.all(),
-        "salads": Salad.objects.all(),
-        "special_pizzas": SpecialPizza.objects.all(),
+        "pastas": Pasta.objects.all().order_by("price"),
+        "salads": Salad.objects.all().order_by("price"),
+        "special_pizzas": SpecialPizza.objects.all().order_by("price"),
         "cart_contents": OrderCart.objects.filter(username = request.session['username']).all(),
         "staff_status": staff_check
     }
@@ -36,15 +36,15 @@ def index(request):
         logged_in = ""
         context = {
         "logged_in": logged_in,
-        "regular_pizzas": RegularPizza.objects.all(),
-        "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
-        "dinner_platters": DinnerPlatter.objects.all().order_by("price"),
-        "subs": Sub.objects.all().order_by("price"),
+        "regular_pizzas": RegularPizza.objects.all().order_by("price"),
+        "sicillian_pizzas": SicilianPizza.objects.all().order_by("price").order_by("price"),
+        "dinner_platters": DinnerPlatter.objects.all().order_by("price").order_by("price"),
+        "subs": Sub.objects.all().order_by("price").order_by("price"),
         "sub_extras": SubExtra.objects.all(),
         "toppings": Topping.objects.all(),
-        "pastas": Pasta.objects.all(),
-        "salads": Salad.objects.all(),
-        "special_pizzas": SpecialPizza.objects.all()
+        "pastas": Pasta.objects.all().order_by("price"),
+        "salads": Salad.objects.all().order_by("price"),
+        "special_pizzas": SpecialPizza.objects.all().order_by("price")
     }
 
     
@@ -196,14 +196,14 @@ def viewOrders(request):
 def updateMenu(request):
     """defines the update menu route"""
     context = {
-        "regular_pizzas": RegularPizza.objects.all(),
+        "regular_pizzas": RegularPizza.objects.all().order_by("price"),
         "sicillian_pizzas": SicilianPizza.objects.all().order_by("price"),
         "dinner_platters": DinnerPlatter.objects.all().order_by("price"),
-        "subs": Sub.objects.all().order_by("price"),
+        "subs": Sub.objects.all().order_by("price").order_by("price"),
         "sub_extras": SubExtra.objects.all(),
         "toppings": Topping.objects.all(),
-        "pastas": Pasta.objects.all(),
-        "salads": Salad.objects.all(),
-        "special_pizzas": SpecialPizza.objects.all()
+        "pastas": Pasta.objects.all().order_by("price"),
+        "salads": Salad.objects.all().order_by("price"),
+        "special_pizzas": SpecialPizza.objects.all().order_by("price")
     }
     return render(request, 'updateMenu.html', context=context)

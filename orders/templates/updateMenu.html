@@ -6,10 +6,10 @@
 
 {% block body %}
     {% load static %}
-    <h3 class="menuTitle">Existing Items:</h3>
+    <h3 class="menuTitle" style="width: 50%;">Existing Items:</h3>
 
-    <h5 class="menuTitle">Regular Pizza</h5>
-    <table class="table table-dark menuTable">
+    <h5 class="menuTitle" style="width: 50%;">Regular Pizza</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
         <thead>
             <th style="text-align: center;">Size</th>
             <th style="text-align: center;">Toppings</th>
@@ -29,8 +29,8 @@
     </table>
 
 
-    <h5 class="menuTitle">Sicillian Pizza</h5>
-    <table class="table table-dark menuTable">
+    <h5 class="menuTitle" style="width: 50%;">Sicillian Pizza</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
         <thead>
             <th style="text-align: center;">Size</th>
             <th style="text-align: center;">Toppings</th>
@@ -48,8 +48,8 @@
         </tbody>
     </table>
 
-    <h5 class="menuTitle">Salad</h5>
-    <table class="table table-dark menuTable">
+    <h5 class="menuTitle" style="width: 50%;">Salad</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
         <thead>
             <th style="text-align: center;">Name</th>
             <th style="text-align: center;">Price</th>
@@ -64,5 +64,123 @@
         {% endfor %}
         </tbody>
     </table>
+    
+    <h5 class="menuTitle" style="width: 50%;">Dinner Platters</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Size</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for platter in dinner_platters %}
+        <tr>
+            <td><input type="text" value="{{ platter.name }}" class="form-control"></td>
+            <td><input type="text" value="{{ platter.size }}" class="form-control"></td>
+            <td><input type="text" value="{{ platter.price }}" class="form-control"></td>
+            <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="menuTitle" style="width: 50%;">Salad</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for salad in salads %}
+        <tr>
+                <td><input type="text" value="{{ salad.name }}" class="form-control"></td>
+                <td><input type="text" value="{{ salad.price }}" class="form-control"></td>
+                <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <h5 class="menuTitle" style="width: 50%;">Subs</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for sub in subs %}
+        <tr>
+            <td><input type="text" value="{{ sub.name }}" class="form-control"></td>
+            <td><input type="text" value="{{ sub.price }}" class="form-control"></td>
+            <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="menuTitle" style="width: 50%;">Pastas</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for pasta in pastas %}
+        <tr>
+            <td><input type="text" value="{{ pasta.name }}" class="form-control"></td>
+            <td><input type="text" value="{{ pasta.price }}" class="form-control"></td>
+            <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="menuTitle" style="width: 50%;">Special Pizzas</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+            <th style="text-align: center;">Price</th>
+        </thead>
+        <tbody>
+        {% for pizza in special_pizzas %}
+        <tr>
+            <td><input type="text" value="{{ pizza.name }}" class="form-control"></td>
+            <td><input type="text" value="{{ pizza.price }}" class="form-control"></td>
+            <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="menuTitle" style="width: 50%;">Toppings</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+        </thead>
+        <tbody>
+        {% for topping in toppings %}
+        <tr>
+            <td><input type="text" value="{{ topping.name }}" class="form-control"></td>
+            <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="menuTitle" style="width: 50%;">Sub Extras</h5>
+    <table class="table table-dark menuTable" style="width: 50%;">
+        <thead>
+            <th style="text-align: center;">Name</th>
+        </thead>
+        <tbody>
+        {% for extra in sub_extras %}
+        <tr>
+            <td><input type="text" value="{{ extra.name }}" class="form-control"></td>
+            <td><button class="btn btn-danger">Update</button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     <script src="{% static 'javascript/hideCart.js' %}"></script>
 {% endblock %}
