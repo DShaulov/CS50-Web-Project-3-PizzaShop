@@ -16,7 +16,6 @@ def index(request):
     try:
         logged_in = request.session['username']
         staff_check = User.objects.get(username=logged_in).is_staff
-        print(staff_check)
         context = {
         "logged_in": logged_in,
         "regular_pizzas": RegularPizza.objects.all().order_by("price"),
