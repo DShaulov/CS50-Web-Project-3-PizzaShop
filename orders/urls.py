@@ -12,5 +12,6 @@ urlpatterns = [
     path("deleteOrder", views.deleteOrder, name="deleteOrder"),
     path("paidOrder", views.paidOrder, name="paidOrder"),
     path("viewOrders", views.viewOrders, name="viewOrders"),
-    path("updateMenu", views.updateMenu, name="updateMenu")
+    path("updateMenu", views.updateMenu, name="updateMenu"),
+    path("addNewItem", views.addNewItem, name="addNewItem")
 ]

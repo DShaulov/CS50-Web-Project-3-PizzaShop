@@ -206,3 +206,8 @@ def updateMenu(request):
         "special_pizzas": SpecialPizza.objects.all().order_by("price")
     }
     return render(request, 'updateMenu.html', context=context)
+
+def addNewItem(request):
+    """defines the add new item to the menu route"""
+    print('hey im in!')
+    return HttpResponse("", 204)

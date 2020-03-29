@@ -6,6 +6,7 @@
 
 {% block body %}
     {% load static %}
+    {% csrf_token %}
     <div style="width: 49%; float: left;">
         <h3 class="menuTitle" >Existing Items:</h3>
 
@@ -182,7 +183,7 @@
                     <td><input type="text" class="new_item_type form-control"></td>
                     <td><input type="text" class="new_item_toppings_names form-control"></td>
                     <td><input type="text" class="new_item_price form-control"></td>
-                    <td><button class="btn btn-danger">Add</button></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
                 </tr>
             </tbody>
         </table>
@@ -199,7 +200,7 @@
                     <td><input type="text" class="new_item_type form-control"></td>
                     <td><input type="text" class="new_item_toppings form-control"></td>
                     <td><input type="text" class="new_item_price form-control"></td>
-                    <td><button class="btn btn-danger">Add</button></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
                 </tr>
             </tbody>
         </table>
@@ -214,7 +215,7 @@
                 <tr>
                     <td><input type="text" class="new_item_type form-control"></td>
                     <td><input type="text" class="new_item_price form-control"></td>
-                    <td><button class="btn btn-danger">Add</button></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
                 </tr>
             </tbody>
         </table>
@@ -231,18 +232,89 @@
                     <td><input type="text" class="new_item_type form-control"></td>
                     <td><input type="text" class="new_item_toppings form-control"></td>
                     <td><input type="text" class="new_item_price form-control"></td>
-                    <td><button class="btn btn-danger">Add</button></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
                 </tr>
             </tbody>
         </table>
 
         <h5 class="menuTitle" >Subs</h5>
+        <table class="table table-dark menuTable">
+            <thead>
+                <th class="middleTD">Name</th>
+                <th class="middleTD">Price</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="new_item_type form-control"></td>
+                    <td><input type="text" class="new_item_price form-control"></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
+                </tr>
+            </tbody>
+        </table>
+
         <h5 class="menuTitle" >Pasta</h5>
+        <table class="table table-dark menuTable">
+            <thead>
+                <th class="middleTD">Name</th>
+                <th class="middleTD">Price</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="new_item_type form-control"></td>
+                    <td><input type="text" class="new_item_price form-control"></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
+                </tr>
+            </tbody>
+        </table>
+
         <h5 class="menuTitle" >Special Pizza</h5>
+        <table class="table table-dark menuTable">
+            <thead>
+                <th class="middleTD">Name</th>
+                <th class="middleTD">Price</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="new_item_type form-control"></td>
+                    <td><input type="text" class="new_item_price form-control"></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
+                </tr>
+            </tbody>
+        </table>
+
         <h5 class="menuTitle" >Topping</h5>
+        <table class="table table-dark menuTable">
+            <thead>
+                <th class="middleTD">Name</th>
+                <th class="middleTD">Price</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="new_item_type form-control"></td>
+                    <td><input type="text" class="new_item_price form-control"></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
         <h5 class="menuTitle" >Sub Extras</h5>
+        <table class="table table-dark menuTable">
+            <thead>
+                <th class="middleTD">Name</th>
+                <th class="middleTD">Price</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="new_item_type form-control"></td>
+                    <td><input type="text" class="new_item_price form-control"></td>
+                    <td><button class="btn btn-danger addNewItem">Add</button></td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
     <script src="{% static 'javascript/hideCart.js' %}"></script>
+    <script src="{% static 'javascript/addNewItem.js' %}"></script>
 {% endblock %}
