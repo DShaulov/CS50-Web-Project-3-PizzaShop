@@ -209,5 +209,163 @@ def updateMenu(request):
 
 def addNewItem(request):
     """defines the add new item to the menu route"""
-    print('hey im in!')
-    return HttpResponse("", 204)
+
+    # get the menu items to add to the database
+    new_item_name = request.POST.get('new_item_name')
+    new_item_toppings = request.POST.get('new_item_toppings')
+    new_item_price = request.POST.get('new_item_price')
+    new_item_category = request.POST.get('new_item_category')
+
+    # add the items to the database
+    if new_item_category == "regular_pizza":
+        new_item = RegularPizza(
+            size = new_item_name,
+            toppings = new_item_toppings,
+            price = new_item_price
+        )
+        new_item.save()
+
+    if new_item_category == "sicillian_pizza":
+        new_item = SicilianPizza(
+            size = new_item_name,
+            toppings = new_item_toppings,
+            price = new_item_price
+        )
+        new_item.save()
+    
+    if new_item_category == "salad":
+        new_item = Salad(
+            name = new_item_name,
+            price = new_item_price
+        )
+        new_item.save()
+
+    if new_item_category == "dinner_platter":
+        new_item = DinnerPlatter(
+            name = new_item_name,
+            size = new_item_toppings,
+            price = new_item_price
+        )
+        new_item.save()
+
+    if new_item_category == "subs":
+        new_item = Sub(
+            name = new_item_name,
+            price = new_item_price
+        )
+        new_item.save()
+
+    if new_item_category == "pasta":
+        new_item = Pasta(
+            name = new_item_name,
+            price = new_item_price
+        )
+        new_item.save()
+
+    if new_item_category == "special_pizza":
+        new_item = SpecialPizza(
+            name = new_item_name,
+            price = new_item_price
+        )
+        new_item.save()
+    
+    if new_item_category == "topping":
+        new_item = Topping(
+            name = new_item_name,
+        )
+        new_item.save()
+
+    if new_item_category == "sub_extra":
+        new_item = SpecialPizza(
+            name = new_item_name,
+            price = new_item_price
+        )
+        new_item.save()
+    return HttpResponse("")
+
+def removeMenuItem(request):
+    """defines the remove menu item path"""
+    # get the item info
+    remove_name = request.POST.get('remove_name')
+    remove_toppings = request.POST.get('remove_toppings')
+    remove_price = request.POST.get('remove_price')
+    remove_category = request.POST.get('remove_category')
+
+
+    print(remove_name, remove_price, remove_toppings, remove_category)
+
+    # remove the item from the database
+    if remove_category == "regular_pizza":
+        remove_item = RegularPizza.objects.get(
+            size = remove_name,
+            toppings = remove_toppings,
+            price = remove_price
+        )
+        remove_item.delete()
+
+
+    if remove_category == "sicillian_pizza":
+        remove_item = SicilianPizza.objects.get(
+            size = remove_name,
+            toppings = remove_toppings,
+            price = remove_price
+        )
+        remove_item.delete()
+
+
+    if remove_category == "salad":
+        remove_item = Salad.objects.get(
+            name = remove_name,
+            price = remove_price
+        )
+        remove_item.delete()
+
+
+    if remove_category == "dinner_platter":
+        remove_item = DinnerPlatter.objects.get(
+            name = remove_name,
+            size = remove_toppings,
+            price = remove_price
+        )
+        remove_item.delete()
+
+
+    if remove_category == "sub":
+        remove_item = Sub.objects.get(
+            size = remove_name,
+            price = remove_price
+        )
+        remove_item.delete()
+
+
+    if remove_category == "pasta":
+        remove_item = Pasta.objects.get(
+            name = remove_name,
+            price = remove_price
+        )
+        remove_item.delete()
+
+
+    if remove_category == "special_pizza":
+        remove_item = SpecialPizza.objects.get(
+            size = remove_name,
+            price = remove_price
+        )
+        remove_item.delete()
+
+    if remove_category == "topping":
+        remove_item = Topping.objects.get(
+            name = remove_name,
+        )
+        remove_item.delete()
+
+    if remove_category == "sub_extra":
+        remove_item = SubExtra.objects.get(
+            name = remove_name,
+            price = remove_price
+        )
+        remove_item.delete()
+    
+
+    
+    return HttpResponse("")
