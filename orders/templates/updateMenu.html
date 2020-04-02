@@ -23,8 +23,9 @@
                     <td><input type="text" value="{{ pizza.size }}" class="type form-control"></td>
                     <td><input type="text" value="{{ pizza.toppings }}" class="toppings form-control"></td>
                     <td><input type="text" value="{{ pizza.price }}" class="price form-control"></td>
+                    <td><input type="text" value="{{ pizza.id }}" class="id form-control" hidden></td>
                     <td><input type="text" value="regular_pizza" class="category" hidden></td>
-                    <td><button class="btn btn-danger">Update</button></td>
+                    <td><button class="btn btn-danger update_btn">Update</button></td>
                     <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             
@@ -46,8 +47,9 @@
                     <td><input type="text" value="{{ pizza.size }}" class="type form-control"></td>
                     <td><input type="text" value="{{ pizza.toppings }}" class="toppings form-control"></td>
                     <td><input type="text" value="{{ pizza.price }}" class="price form-control"></td>
+                    <td><input type="text" value="{{ pizza.id }}" class="id form-control" hidden></td>
                     <td><input type="text" value="sicillian_pizza" class="category" hidden></td>
-                    <td><button class="btn btn-danger">Update</button></td>
+                    <td><button class="btn btn-danger update_btn">Update</button></td>
                     <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -65,8 +67,9 @@
             <tr>
                     <td><input type="text" value="{{ salad.name }}" class="type form-control"></td>
                     <td><input type="text" value="{{ salad.price }}" class="price form-control"></td>
+                    <td><input type="text" value="{{ salad.id }}" class="id form-control" hidden></td>
                     <td><input type="text" value="salad" class="category" hidden></td>
-                    <td><button class="btn btn-danger">Update</button></td>
+                    <td><button class="btn btn-danger update_btn">Update</button></td>
                     <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -86,8 +89,9 @@
                 <td><input type="text" value="{{ platter.name }}" class="type form-control"></td>
                 <td><input type="text" value="{{ platter.size }}" class="toppings form-control"></td>
                 <td><input type="text" value="{{ platter.price }}" class="price form-control"></td>
+                <td><input type="text" value="{{ platter.id }}" class="id form-control" hidden></td>
                 <td><input type="text" value="dinner_platter" class="category" hidden></td>
-                <td><button class="btn btn-danger">Update</button></td>
+                <td><button class="btn btn-danger update_btn">Update</button></td>
                 <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -106,8 +110,9 @@
             <tr>
                 <td><input type="text" value="{{ sub.name }}" class="type form-control"></td>
                 <td><input type="text" value="{{ sub.price }}" class="price form-control"></td>
+                <td><input type="text" value="{{ sub.id }}" class="id form-control" hidden></td>
                 <td><input type="text" value="sub" class="category" hidden></td>
-                <td><button class="btn btn-danger">Update</button></td>
+                <td><button class="btn btn-danger update_btn">Update</button></td>
                 <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -125,8 +130,9 @@
             <tr>
                 <td><input type="text" value="{{ pasta.name }}" class="type form-control"></td>
                 <td><input type="text" value="{{ pasta.price }}" class="price form-control"></td>
+                <td><input type="text" value="{{ pasta.id }}" class="id form-control" hidden></td>
                 <td><input type="text" value="pasta" class="category" hidden></td>
-                <td><button class="btn btn-danger">Update</button></td>
+                <td><button class="btn btn-danger update_btn">Update</button></td>
                 <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -144,8 +150,9 @@
             <tr>
                 <td><input type="text" value="{{ pizza.name }}" class="type form-control"></td>
                 <td><input type="text" value="{{ pizza.price }}" class="price form-control"></td>
+                <td><input type="text" value="{{ pizza.id }}" class="id form-control" hidden></td>
                 <td><input type="text" value="special_pizza" class="category" hidden></td>
-                <td><button class="btn btn-danger">Update</button></td>
+                <td><button class="btn btn-danger update_btn">Update</button></td>
                 <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -161,8 +168,9 @@
             {% for topping in toppings %}
             <tr>
                 <td><input type="text" value="{{ topping.name }}" class="type form-control"></td>
+                <td><input type="text" value="{{ topping.id }}" class="id form-control" hidden></td>
                 <td><input type="text" value="topping" class="category" hidden></td>
-                <td><button class="btn btn-danger">Update</button></td>
+                <td><button class="btn btn-danger update_btn">Update</button></td>
                 <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -180,8 +188,9 @@
             <tr>
                 <td><input type="text" value="{{ extra.name }}" class="type form-control"></td>
                 <td><input type="text" value="{{ extra.price }}" class="price type form-control"></td>
+                <td><input type="text" value="{{ extra.id }}" class="id form-control" hidden></td>
                 <td><input type="text" value="sub_extra" class="category" hidden></td>
-                <td><button class="btn btn-danger">Update</button></td>
+                <td><button class="btn btn-danger update_btn">Update</button></td>
                 <td><button class="btn btn-danger remove_btn">Remove</button></td>
             </tr>
             {% endfor %}
@@ -344,4 +353,5 @@
     <script src="{% static 'javascript/hideCart.js' %}"></script>
     <script src="{% static 'javascript/addNewItem.js' %}"></script>
     <script src="{% static 'javascript/removeMenuItem.js' %}"></script>
+    <script src="{% static 'javascript/updateMenuItem.js' %}"></script>
 {% endblock %}

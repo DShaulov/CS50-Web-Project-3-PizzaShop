@@ -25,15 +25,20 @@ $(document).ready( () => {
 
         // check that price is exactly 2 digits past decimal point
         var price = $(inputs).filter('.new_item_price').val();
-        var price_text = price.toString();
-        var decimal_index = price_text.indexOf('.');
-        console.log(price_text.length - decimal_index);
-        // check that the length of the 
-        if (price_text.length - decimal_index != 3) {
-            $(inputs).filter('.new_item_price').val('');
-            $(inputs).filter('.new_item_price').attr('placeholder', 'invalid price');
-            return false;
+        
+        // check that there is a price
+        if (price != undefined){
+            var price_text = price.toString();
+            var decimal_index = price_text.indexOf('.');
+            console.log(price_text.length - decimal_index);
+            // check that the length of the 
+            if (price_text.length - decimal_index != 3) {
+                $(inputs).filter('.new_item_price').val('');
+                $(inputs).filter('.new_item_price').attr('placeholder', 'invalid price');
+                return false;
         }
+        }
+        
 
         // send the new menu item to the server
         $.ajax({

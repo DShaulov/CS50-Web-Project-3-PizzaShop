@@ -29,5 +29,5 @@ urlpatterns = [
     path("viewOrders", include("orders.urls")),
     path("updateMenu", include("orders.urls")),
     path("addNewItem", include("orders.urls")),
-    path("removeMenuItem", include("orders.urls"))
+    path("removeMenuItem", include("orders.urls")),
 ]

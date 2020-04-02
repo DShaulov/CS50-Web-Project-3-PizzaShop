@@ -286,83 +286,70 @@ def addNewItem(request):
 def removeMenuItem(request):
     """defines the remove menu item path"""
     # get the item info
-    remove_name = request.POST.get('remove_name')
-    remove_toppings = request.POST.get('remove_toppings')
-    remove_price = request.POST.get('remove_price')
+    remove_id = request.POST.get('remove_id')
     remove_category = request.POST.get('remove_category')
 
 
-    print(remove_name, remove_price, remove_toppings, remove_category)
 
     # remove the item from the database
     if remove_category == "regular_pizza":
         remove_item = RegularPizza.objects.get(
-            size = remove_name,
-            toppings = remove_toppings,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
 
 
     if remove_category == "sicillian_pizza":
         remove_item = SicilianPizza.objects.get(
-            size = remove_name,
-            toppings = remove_toppings,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
 
 
     if remove_category == "salad":
         remove_item = Salad.objects.get(
-            name = remove_name,
-            price = remove_price
+            id = remove_id
+
         )
         remove_item.delete()
 
 
     if remove_category == "dinner_platter":
         remove_item = DinnerPlatter.objects.get(
-            name = remove_name,
-            size = remove_toppings,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
 
 
     if remove_category == "sub":
         remove_item = Sub.objects.get(
-            size = remove_name,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
 
 
     if remove_category == "pasta":
         remove_item = Pasta.objects.get(
-            name = remove_name,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
 
 
     if remove_category == "special_pizza":
         remove_item = SpecialPizza.objects.get(
-            size = remove_name,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
 
     if remove_category == "topping":
         remove_item = Topping.objects.get(
-            name = remove_name,
+            id = remove_id
         )
         remove_item.delete()
 
     if remove_category == "sub_extra":
         remove_item = SubExtra.objects.get(
-            name = remove_name,
-            price = remove_price
+            id = remove_id
         )
         remove_item.delete()
     
