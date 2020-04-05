@@ -56,6 +56,7 @@ $(document).ready( () => {
             // upon success, empty the input fields
             success: () => {
                 $(inputs).filter('.new_item_type').val(''),
+                
                 $(inputs).filter('.new_item_toppings').val(''),
                 $(inputs).filter('.new_item_price').val('')
 
